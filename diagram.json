@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -105.3, "left": -139.8, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 150, "left": -188.2, "attrs": { "color": "red" } },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -169.37, "left": 16, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "esp:GND.1", "led1:C", "black", [ "h-215.81", "v48" ] ],
+    [ "esp:12", "dht1:SDA", "green", [ "h-62.21", "v-96", "h-57.7" ] ],
+    [ "esp:27", "led1:A", "green", [ "h-14.21", "v48" ] ],
+    [ "lcd1:VDD", "esp:5V", "green", [ "v0" ] ],
+    [ "lcd1:V0", "esp:GND.1", "green", [ "v0" ] ],
+    [ "lcd1:D0", "esp:23", "green", [ "v48", "h38.5", "v38.4" ] ]
+  ],
+  "dependencies": {}
+}
